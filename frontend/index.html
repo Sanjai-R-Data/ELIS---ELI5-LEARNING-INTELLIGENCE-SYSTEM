@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ELIS — AI-Powered Learning</title>
+
+
+        <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <section
+        id="uploadScreen"
+        class="screen active"
+    >
+
+        <header class="header">
+
+            <div class="badge">
+                AI-Powered Learning
+            </div>
+
+            <h1>
+                Learn anything,<br>
+                <span>simply.</span>
+            </h1>
+
+            <p class="subtitle">
+                Upload your textbook and let ELIS
+                turn it into a personalized learning
+                experience.
+            </p>
+
+        </header>
+
+
+        <section
+            class="upload-card"
+            id="uploadCard"
+        >
+
+            <div>
+
+                <div class="upload-icon">
+                    📄
+                </div>
+
+                <div class="upload-title">
+                    Upload your textbook
+                </div>
+
+                <p class="upload-description">
+                    Upload a textbook PDF to begin your personalized learning journey.
+                </p>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".pdf,application/pdf"
+                    aria-label="Choose a PDF textbook"
+                >
+
+                <button
+                    class="choose-button"
+                    id="chooseButton"
+                    type="button"
+                    aria-label="Choose a PDF textbook"
+                >
+                    Choose PDF
+                </button>
+
+                <div class="limits">
+                    PDF only · Maximum 20 MB · Maximum 100 pages
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div
+            class="file-card"
+            id="fileCard"
+        >
+
+            <div>
+
+                <div
+                    class="file-name"
+                    id="fileName"
+                ></div>
+
+                <div
+                    class="file-size"
+                    id="fileSize"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="status"
+            id="status"
+        ></div>
+
+
+        <div
+            class="ready-card"
+            id="readyCard"
+        >
+
+            <div class="ready-icon">
+                ✓
+            </div>
+
+            <div class="ready-title">
+                Your textbook is ready
+            </div>
+
+            <p class="ready-description">
+                ELIS has processed your textbook.
+                You can now begin learning.
+            </p>
+
+            <button
+                class="start-button"
+                id="startButton"
+                type="button"
+                aria-label="Start learning from this textbook"
+            >
+                Start Learning
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <section
+        id="setupScreen"
+        class="screen"
+    >
+
+        <header class="header">
+
+            <div class="badge">
+                Learning Setup
+            </div>
+
+            <h1>
+                Let's make it<br>
+                <span>simple.</span>
+            </h1>
+
+            <p class="subtitle">
+                Tell ELIS how you want the textbook
+                explained to you.
+            </p>
+
+        </header>
+
+
+        <div class="setup-card">
+
+            <div class="setup-icon">
+                🎓
+            </div>
+
+            <div class="setup-title">
+                Choose your learning level
+            </div>
+
+            <p class="setup-description">
+                ELIS will adapt its explanations,
+                examples and questions to your
+                selected level.
+            </p>
+
+            <div
+                class="class-options"
+                id="classOptions"
+            ></div>
+
+            <button
+                class="continue-button"
+                id="continueButton"
+                type="button"
+                aria-label="Continue with the selected learning level"
+                disabled
+            >
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <section
+        id="learningScreen"
+        class="screen"
+    >
+
+        <header class="header">
+
+            <div class="badge">
+                Your Learning Space
+            </div>
+
+            <h1>
+                Ready to<br>
+                <span>learn.</span>
+            </h1>
+
+            <p class="subtitle">
+                Your textbook has been prepared
+                for personalized learning.
+            </p>
+
+        </header>
+
+
+        <div class="dashboard">
+
+            <div class="dashboard-top">
+
+                <div>
+
+                    <div class="dashboard-label">
+                        Your Learning Material
+                    </div>
+
+                    <div
+                        class="dashboard-title"
+                        id="dashboardTitle"
+                    >
+                        Your Textbook
+                    </div>
+
+                    <p class="dashboard-description">
+                        Choose how you want ELIS to help
+                        you understand the material.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="class-pill"
+                    id="selectedClassTitle"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="document-info">
+
+                <div class="document-icon">
+                    📄
+                </div>
+
+                <div class="document-details">
+
+                    <div class="document-label">
+                        Uploaded Material
+                    </div>
+
+                    <div
+                        class="document-name"
+                        id="dashboardFileName"
+                    >
+                        Your textbook
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="topics-section">
+
+                <div class="topics-heading">
+                    What would you like to learn?
+                </div>
+
+                <p class="topics-description">
+                    Choose a topic from your textbook. ELIS will use your selected topic for the learning tools.
+                </p>
+
+                <div class="topics-status" id="topicsStatus">
+                    🧠 Loading topics from your textbook...
+                </div>
+
+                <div class="topic-list" id="topicList"></div>
+
+                <div class="selected-topic" id="selectedTopic"></div>
+
+            </div>
+
+            <div class="learning-question" style="margin-top:30px;">
+                What would you like to do?
+            </div>
+
+            <div class="learning-actions disabled-actions" id="learningActions">
+
+                <button class="learning-action" id="explainButton" type="button" disabled>
+                    <span class="action-arrow">→</span>
+                    <div class="action-icon">🧠</div>
+                    <div class="action-title">Explain</div>
+                    <div class="action-description">Understand the selected topic in simple language.</div>
+                </button>
+
+                <button class="learning-action" id="analogyButton" type="button" disabled>
+                    <span class="action-arrow">→</span>
+                    <div class="action-icon">💡</div>
+                    <div class="action-title">Analogy</div>
+                    <div class="action-description">Connect the selected topic to relatable real-world ideas.</div>
+                </button>
+
+                <button class="learning-action" id="glossaryButton" type="button" disabled>
+                    <span class="action-arrow">→</span>
+                    <div class="action-icon">📖</div>
+                    <div class="action-title">Glossary</div>
+                    <div class="action-description">Learn important terms from the selected topic.</div>
+                </button>
+
+                <button class="learning-action" id="quizButton" type="button" disabled>
+                    <span class="action-arrow">→</span>
+                    <div class="action-icon">📝</div>
+                    <div class="action-title">Take Quiz</div>
+                    <div class="action-description">Test your understanding of the selected topic.</div>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section
+        id="quizScreen"
+        class="screen"
+    >
+
+        <header class="header">
+
+            <div class="badge">
+                AI Quiz
+            </div>
+
+            <h1>
+                Test your<br>
+                <span>understanding.</span>
+            </h1>
+
+            <p class="subtitle">
+                Answer a few questions based on your
+                selected textbook topic.
+            </p>
+
+        </header>
+
+        <div class="explanation-header">
+            <button
+                class="back-button"
+                id="backFromQuizButton"
+                type="button"
+            >
+                ← Back
+            </button>
+        </div>
+
+        <div class="quiz-card" id="quizCard">
+            <div class="quiz-loading">
+                📝 ELIS is preparing your quiz...
+            </div>
+        </div>
+
+    </section>
+
+    <section
+        id="analogyScreen"
+        class="screen"
+    >
+
+        <header class="header">
+
+            <div class="badge">
+                AI Analogy
+            </div>
+
+            <h1>
+                Let's make it<br>
+                <span>relatable.</span>
+            </h1>
+
+            <p class="subtitle">
+                ELIS is connecting your selected
+                textbook topic to a familiar
+                real-world idea.
+            </p>
+
+        </header>
+
+
+        <div class="explanation-header">
+
+            <button
+                class="back-button"
+                id="backFromAnalogyButton"
+                type="button"
+            >
+                ← Back
+            </button>
+
+        </div>
+
+
+        <div
+            class="analogy-card"
+            id="analogyCard"
+        >
+
+            <div class="analogy-loading">
+
+                <div class="loading-icon">
+                    💡
+                </div>
+
+                <div>
+                    ELIS is creating an analogy...
+                </div>
+
+                <div
+                    style="
+                        font-size:13px;
+                        margin-top:6px;
+                    "
+                >
+                    Keeping it simple and grounded
+                    in your textbook.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section
+        id="glossaryScreen"
+        class="screen"
+    >
+
+        <header class="header">
+
+            <div class="badge">
+                AI Glossary
+            </div>
+
+            <h1>
+                Know the<br>
+                <span>terms.</span>
+            </h1>
+
+            <p class="subtitle">
+                ELIS is extracting the important
+                terms from your selected textbook topic.
+            </p>
+
+        </header>
+
+
+        <div class="explanation-header">
+
+            <button
+                class="back-button"
+                id="backFromGlossaryButton"
+                type="button"
+            >
+                ← Back
+            </button>
+
+        </div>
+
+
+        <div
+            class="glossary-card"
+            id="glossaryCard"
+        >
+
+            <div class="glossary-loading">
+
+                <div class="loading-icon">
+                    📖
+                </div>
+
+                <div>
+                    ELIS is creating your glossary...
+                </div>
+
+                <div
+                    style="
+                        font-size:13px;
+                        margin-top:6px;
+                    "
+                >
+                    Keeping definitions simple and
+                    grounded in your textbook.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+</div>
+
+
+
+    <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
+
+        <header class="header">
+
+            <div class="badge">
+                AI Explanation
+            </div>
+
+            <h1>
+                Let's<br>
+                <span>understand.</span>
+            </h1>
+
+            <p class="subtitle">
+                ELIS is turning your textbook content
+                into a simple explanation for your level.
+            </p>
+
+        </header>
+
+
+        <div
+            class="explanation-header"
+        >
+
+            <button
+                class="back-button"
+                id="backToDashboardButton"
+                type="button"
+            >
+                ← Back
+            </button>
+
+        </div>
+
+
+        <div
+            class="explanation-card"
+            id="explanationCard"
+        >
+
+            <div class="explanation-loading">
+
+                <div class="loading-icon">
+                    🧠
+                </div>
+
+                <div>
+                    ELIS is thinking...
+                </div>
+
+                <div
+                    style="
+                        font-size:13px;
+                        margin-top:6px;
+                    "
+                >
+                    Creating a simple,
+                    source-grounded explanation.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+    <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
